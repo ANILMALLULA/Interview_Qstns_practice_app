@@ -21,7 +21,7 @@
   background-color: transparent;
   border: 1px solid #cbd2d9;
   font-size: 14px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 500;
   border-radius: 4px;
   padding-top: 4px;
@@ -42,6 +42,6 @@
 .option {
   color: #323f4b;
   font-size: 14px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 500;
 }

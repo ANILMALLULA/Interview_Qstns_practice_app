@@ -11,7 +11,7 @@
     width: 88%;
   }
 }
-    
+
 .apply-filters {
   display: flex;
 }
@@ -57,7 +57,7 @@
 
 .question-text {
   color: #0f172a;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 20px;
   font-weight: 700;
 }

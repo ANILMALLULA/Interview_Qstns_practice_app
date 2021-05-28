@@ -1,75 +1,75 @@
-import {Component} from 'react'
+import { Component } from "react";
 
-import Filters from '../Filters'
-import InterviewQuestion from '../InterviewQuestion'
-import './index.css'
+import Filters from "../Filters";
+import InterviewQuestion from "../InterviewQuestion";
+import "./index.css";
 
-let filteredData
+let filteredData;
 class InterviewQuestionsApp extends Component {
   state = {
-    activeLanguage: 'ALL',
-    activeDifficultyLevel: 'ALL',
-  }
+    activeLanguage: "ALL",
+    activeDifficultyLevel: "ALL",
+  };
 
-  onChangeLanguage = value => {
+  onChangeLanguage = (value) => {
     this.setState({
       activeLanguage: value,
-    })
-  }
+    });
+  };
 
-  onChangeDifficultyLevel = value => {
+  onChangeDifficultyLevel = (value) => {
     this.setState({
       activeDifficultyLevel: value,
-    })
-  }
+    });
+  };
 
   getFilteredData = () => {
-    const {questionsData} = this.props
-    const {activeLanguage, activeDifficultyLevel} = this.state
+    const { questionsData } = this.props;
+    const { activeLanguage, activeDifficultyLevel } = this.state;
 
-    if (activeLanguage === 'ALL' && activeDifficultyLevel === 'ALL') {
-      filteredData = questionsData
-    } else if (activeLanguage === 'ALL' && activeDifficultyLevel !== 'ALL') {
+    if (activeLanguage === "ALL" && activeDifficultyLevel === "ALL") {
+      filteredData = questionsData;
+    } else if (activeLanguage === "ALL" && activeDifficultyLevel !== "ALL") {
       filteredData = questionsData.filter(
-        eachQuestion => eachQuestion.difficultyLevel === activeDifficultyLevel,
-      )
-    } else if (activeLanguage !== 'ALL' && activeDifficultyLevel === 'ALL') {
+        (eachQuestion) => eachQuestion.difficultyLevel === activeDifficultyLevel
+      );
+    } else if (activeLanguage !== "ALL" && activeDifficultyLevel === "ALL") {
       filteredData = questionsData.filter(
-        eachQuestion => eachQuestion.language === activeLanguage,
-      )
+        (eachQuestion) => eachQuestion.language === activeLanguage
+      );
     } else {
       filteredData = questionsData.filter(
-        eachQuestion =>
+        (eachQuestion) =>
           eachQuestion.language === activeLanguage &&
-          eachQuestion.difficultyLevel === activeDifficultyLevel,
-      )
+          eachQuestion.difficultyLevel === activeDifficultyLevel
+      );
     }
-    return filteredData
-  }
+    return filteredData;
+  };
 
   render() {
-    const filteredQuestionsData = this.getFilteredData()
-    const {levelsData, languageData} = this.props
+    const filteredQuestionsData = this.getFilteredData();
+    const { levelsData, languageData } = this.props;
 
     return (
-      <div className="app-container">
-        <div className="heading-container">
-          <h1 className="heading">30 Seconds of Interviews</h1>
+      <div className='app-container'>
+        <div className='heading-container'>
+          <h1 className='heading'>30 Seconds of Interviews</h1>
           <img
-            className="interview-image"
-            src="https://assets.ccbp.in/frontend/react-js/interview-questions-img.png"
-            alt="img"
+            className='interview-image'
+            src='https://assets.ccbp.in/frontend/react-js/interview-questions-img.png'
+            alt='img'
           />
         </div>
-        <div className="filter-container">
-          <div className="questions-container">
+        <div className='filter-container'>
+          <div className='questions-container'>
             <Filters
               levelsData={levelsData}
               languageData={languageData}
               onChangeDifficultyLevel={this.onChangeDifficultyLevel}
               onChangeLanguage={this.onChangeLanguage}
             />
-            {filteredQuestionsData.map(eachQuestion => (
+            {filteredQuestionsData.map((eachQuestion) => (
               <InterviewQuestion
                 key={eachQuestion.id}
                 question={eachQuestion}
@@ -78,8 +78,8 @@ class InterviewQuestionsApp extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default InterviewQuestionsApp
+export default InterviewQuestionsApp;
